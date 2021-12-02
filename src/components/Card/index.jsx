@@ -4,11 +4,10 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
   cardContainer: {
+      position: 'relative',
     padding: '36px 50px',
     backgroundColor: '#F0F0F0 !important',
-    width: 450,
-    marginRight: 60,
-    marginBottom: 60
+marginBottom: 30
   },
   title: {
     marginBottom: '16px !important',

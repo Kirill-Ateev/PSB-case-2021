@@ -10,10 +10,14 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: 'min(140px, 8%)',
     paddingRight: 'min(140px, 8%)',
     paddingTop: 70,
-    display: 'flex',
-    flexDirection: 'row'
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gridGap: '10px 20px'
   },
-  column: {},
+  column: {
+    position: 'relative',
+    
+  },
 }));
 
 function App() {
@@ -25,9 +29,9 @@ function App() {
       <div className={classes.main}>
         <div className={classes.column}>
           <Card title="Привет, Егор!" />
+          <Card title="Привет, Егор!" />
           <Card title={"Мои проекты"}>
-            <CardEntry text="Личный кабинет “PSB IT HERO”"
-            />
+            <CardEntry text="Личный кабинет “PSB IT HERO”"/>
           </Card>
         </div>
         <div className={classes.column}>
