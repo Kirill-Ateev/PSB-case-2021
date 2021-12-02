@@ -10,8 +10,13 @@ export default function composeTheme() {
     palette: {
       primary: {
         main: '#009fda',
+        secondary: '#CB5621',
+        white: '#ffffff'
       },
-      psbMain: '#303181'
+      secondary: {
+        main: '#CB5621',
+      },
+      psbMain: '#303181',
     },
   });
 }

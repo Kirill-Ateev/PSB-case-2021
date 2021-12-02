@@ -24,9 +24,9 @@ import { useTheme } from '@mui/material/styles';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" align="center">
       {'2021 © '}
-      <Link color="inherit" href="http://react-currency-exchange.surge.sh/">
+      <Link color="inherit" href="#">
         Промсвязьбанк
       </Link>
     </Typography>
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -68,7 +68,6 @@ const LoginModal = ({ open, handleClose, userActions, login, user }) => {
         disableScrollLock={true}
         open={open}
         onClose={handleClose}
-        aria-labelledby="form-dialog-title"
       >
         <SignIn handleLogin={userActions.login} />
       </Dialog>
@@ -163,7 +162,7 @@ function SignIn({ handleLogin }) {
           </Grid>
         </Grid>
       </div>
-      <Box mt={2}>
+      <Box mt={2} mb={2}>
         <Copyright />
       </Box>
     </Container>
