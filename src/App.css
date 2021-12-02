@@ -1,0 +1,65 @@
+.App {
+  height: 100%;
+  padding: 60px 0 0 0;
+  /* background-color: blue; */
+}
+
+.App__row {
+  display: flex;
+  align-items: stretch;
+  position: relative;
+}
+
+.Header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  background-color: blue;
+  align-items: center;
+  transition: height 0.5s ease-out;
+}
+
+.App__aside {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 320px;
+  height: calc(100vh - 60px);
+  flex-shrink: 0;
+  background-color: var(--white);
+  box-shadow: 0px 0px 15px rgba(0, 0, 100, 0.1);
+  font-size: 14px;
+  transition: all 0.4s;
+  z-index: 100;
+}
+
+@media (max-width: 768px) {
+  .App__aside {
+    height: calc(100% - 60px);
+    transform: translateX(-100%);
+    z-index: 2500;
+    width: 100%;
+  }
+}
+
+.App__main {
+  width: 100%;
+  min-height: 100%;
+  min-height: calc(100vh - 60px);
+  padding-left: 320px;
+  -webkit-overflow-scrolling: touch;
+  background-color: var(--app-background);
+}
+
+@media (max-width: 768px) {
+  .App__main {
+    width: 100%;
+    position: relative;
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
