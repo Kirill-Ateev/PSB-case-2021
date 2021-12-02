@@ -7,10 +7,11 @@ import { orange } from '@mui/material/colors';
  */
 export default function composeTheme() {
   return createTheme({
-    // palette: {
-    //   primary: {
-    //     main: orange[500],
-    //   },
-    // },
+    palette: {
+      primary: {
+        main: '#009fda',
+      },
+      psbMain: '#303181'
+    },
   });
 }
