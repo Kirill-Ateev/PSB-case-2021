@@ -100,8 +100,8 @@ const Header = () => {
           textColor="primaryWhite"
           indicatorColor="secondary"
         >
-          <Tab value={0} label="Item One" />
-          <Tab value={1} label="Item Two" />
+          <Tab value={0} label="Главная" />
+          <Tab value={1} label="Проект" />
         </Tabs>
         <div className={classes.search}>
           <div className={classes.searchIconWrapper}>
