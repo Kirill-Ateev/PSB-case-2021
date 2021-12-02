@@ -1,6 +1,7 @@
 import React from 'react';
-import { AppBar } from '@mui/material';
+import { AppBar, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import ModalCard from '../ModalCard';
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -20,6 +21,8 @@ const Hero = () => {
   return (
     <div className={classes.header} position="static">
       This is header!
+      <Button>CLICK</Button>
+      <ModalCard />
     </div>
   );
 };
