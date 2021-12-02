@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { AppBar, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import ModalCard from '../ModalCard';
@@ -17,12 +17,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Hero = () => {
+  const [open, setOpen] = useState(false)
   const classes = useStyles();
   return (
     <div className={classes.header} position="static">
       This is header!
-      <Button>CLICK</Button>
-      <ModalCard />
+      <Button onClick={() => setOpen(true)}>CLICK</Button>
+      <ModalCard open={open} onClose={() => setOpen(false)} />
     </div>
   );
 };
