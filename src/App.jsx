@@ -8,7 +8,7 @@ function App() {
       <Header className="Header" />
       <div className="App__row">
         {/* <div className="App__aside">Sidebar</div> */}
-        <div >Main</div>
+        <div>Main</div>
       </div>
     </div>
   );
