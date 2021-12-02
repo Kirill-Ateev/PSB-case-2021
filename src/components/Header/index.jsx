@@ -1,7 +1,8 @@
 import React from 'react';
-import { AppBar } from '@mui/material';
+import { AppBar, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Login from './components/Login'
+import ModalCard from '../ModalCard';
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -22,6 +23,8 @@ const Hero = () => {
     <div className={classes.header} position="static">
       This is header!
       <Login open={open} handleClose={handleClose} />
+      <Button>CLICK</Button>
+      <ModalCard />
     </div>
 );
 };
