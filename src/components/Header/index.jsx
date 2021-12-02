@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     color: '#ffffff',
     borderRight: '1px white solid',
     paddingRight: 50,
-    marginRight: 55,
+    marginRight: 60,
   },
   userToolsContainer: {
     paddingRight: 'min(80px, 8%)',

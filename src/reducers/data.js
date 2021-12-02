@@ -1,7 +1,7 @@
 import {
-  REQUEST_DATA,
-  RECEIVE_DATA,
-  NOT_RECEIVE_DATA,
+  REQUEST_PROJECTS,
+  RECEIVE_PROJECTS,
+  NOT_RECEIVE_PROJECTS,
   REQUEST_KPI_ENTRIES,
   RECEIVE_KPI_ENTRIES,
   NOT_RECEIVE_KPI_ENTRIES,
@@ -16,20 +16,20 @@ export default function data(
   action
 ) {
   switch (action.type) {
-    case REQUEST_DATA:
+    case REQUEST_PROJECTS:
       return {
         ...state,
         isFetching: true,
       };
 
-    case RECEIVE_DATA:
+    case RECEIVE_PROJECTS:
       return {
         ...state,
         isFetching: false,
-        kpi: action.kpi,
+        projects: action.projects,
       };
 
-    case NOT_RECEIVE_DATA:
+    case NOT_RECEIVE_PROJECTS:
       return {
         ...state,
         isFetching: false,

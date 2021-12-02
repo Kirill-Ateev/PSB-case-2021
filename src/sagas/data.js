@@ -2,17 +2,17 @@ import { takeEvery, put, call, fork, select } from 'redux-saga/effects';
 import Api from '../api/api';
 import * as types from '../constants/actionTypes';
 
-export function* getKpiData(action) {
+export function* getProjects(action) {
   try {
-    const response = yield call(Api.get, 'kpi-dashboard');
+    const response = yield call(Api.get, '/projects');
 
     yield put({
-      type: types.RECEIVE_DATA,
-      kpi: response,
+      type: types.RECEIVE_PROJECTS,
+      projects: response,
     });
   } catch (error) {
     yield put({
-      type: types.NOT_RECEIVE_DATA,
+      type: types.NOT_RECEIVE_PROJECTS,
       errors: response,
     });
     yield put({ type: types.NETWORK_ERROR, error });
@@ -37,6 +37,6 @@ export function* getKpiEntries({ id }) {
   }
 }
 export default function* watchUsers() {
-  yield takeEvery(types.REQUEST_DATA, getKpiData);
+  yield takeEvery(types.REQUEST_PROJECTS, getProjects);
   yield takeEvery(types.REQUEST_KPI_ENTRIES, getKpiEntries);
 }

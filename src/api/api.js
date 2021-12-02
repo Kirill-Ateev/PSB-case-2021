@@ -1,7 +1,7 @@
 import { API_URL } from '../constants/constantValues';
 import fetchJSON from '../functions/fetchJSON';
 import { getCookie } from '../functions/manageCookie';
-// import { camelizeKeys, decamelizeKeys } from 'humps';
+import { camelizeKeys, decamelizeKeys } from 'humps';
 
 export default class Api {
   static async fetch(method, endpoint, options = {}) {
@@ -25,7 +25,7 @@ export default class Api {
         const isJSON = data instanceof Object && data.constructor === Object;
 
         if (isJSON) {
-          // data = decamelizeKeys(data);
+          data = decamelizeKeys(data);
           body = JSON.stringify(data);
         }
 
@@ -34,7 +34,7 @@ export default class Api {
           defaultHeaders = {};
         }
 
-        // defaultHeaders['Authorization'] = `Bearer ${localStorage.getItem('token')}`
+        defaultHeaders['Authorization'] = `Bearer ${localStorage.getItem('token')}`
       }
 
       let url = notApiUrl ? endpoint : `${API_URL}/${endpoint}`;
@@ -53,9 +53,9 @@ export default class Api {
 
       console.log(json);
 
-      // if (json instanceof Object && json.constructor === Object) {
-      //   json = camelizeKeys(json);
-      // }
+      if (json instanceof Object && json.constructor === Object) {
+        json = camelizeKeys(json);
+      }
 
       return json;
     } catch (error) {
