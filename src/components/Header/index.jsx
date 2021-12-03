@@ -102,9 +102,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = ({ user: { isLogged }, userActions }) => {
+const Header = ({ user: { isLogged }, userActions, balance }) => {
   const classes = useStyles();
   const [isSignUpShow, setIsSignUpShow] = React.useState(false);
+<<<<<<< HEAD
   const balance = 100_000_000;
   const avatar = (
       <div className={classes.avatar}>
@@ -112,6 +113,9 @@ const Header = ({ user: { isLogged }, userActions }) => {
         <KeyboardArrowDownIcon className={classes.arrowIcon}/>
       </div>
   )
+=======
+
+>>>>>>> 0646ac4e9e37646d1f970de7faf12c22dd15323b
 
   return (
     <div className={classes.header}>

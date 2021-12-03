@@ -1,5 +1,6 @@
 export const API_URL = 'https://e-kondr01.ru/api';
-
+export const PROGRESS_STEP = 5;
+export const COIN_STEP = 100;
 export const courseCardData = [
   {
     id: 1,
@@ -47,17 +48,17 @@ export const exercises = [
     text: 'Какую из перечисленных платформ мы используем в рамках данного проекта для рабочей коммуникации?',
     variants: [
       {
-        id: 1,
+        id: 4,
         text: 'Slack',
         answer: true,
       },
       {
-        id: 2,
+        id: 5,
         text: 'Вконтакте',
         answer: false,
       },
       {
-        id: 3,
+        id: 6,
         text: 'Телеграмм',
         answer: false,
       },
@@ -71,17 +72,17 @@ export const exercises = [
     text: 'Есть ли daily созвоны? Если да, то в чём их особенности?',
     variants: [
       {
-        id: 1,
+        id: 7,
         text: 'Нет, но есть созвоны в течение спринтов',
         answer: false,
       },
       {
-        id: 2,
+        id: 8,
         text: 'Да, проводится ежедневно, кроме пятницы. Проводим в Zoom.',
         answer: true,
       },
       {
-        id: 3,
+        id: 9,
         text: 'Да, проводится ежедневно, кроме выходных. Проводим в Google meet.',
         answer: false,
       },

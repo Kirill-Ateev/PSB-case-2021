@@ -109,6 +109,7 @@ function App({
   userActions,
 }) {
   const classes = useStyles();
+  const [balance, setBalance] = React.useState(100_000_000)
 
   useEffect(() => {
     if (isLogged) dataActions.getProjects();
@@ -119,7 +120,7 @@ function App({
 
   return isLogged ? (
     <div className="App">
-      <Header className="Header" user={user} userActions={userActions} />
+      <Header className="Header" user={user} userActions={userActions} balance={balance} />
       <Routes>
         <Route
           exact
@@ -240,8 +241,8 @@ function App({
         />
         <Route path="project/:id" element={<Project data={data} />} />
         <Route path="courses" element={<Courses />} />
-        <Route path="courses/:id" element={<Course />} />
-        <Route path="courses/:id/question/:questionId" element={<Course />} />
+        <Route path="courses/:id" element={<Course setBalance={setBalance} balance={balance} />} />
+        <Route path="courses/:id/question/:questionId" element={<Course setBalance={setBalance} balance={balance}/>} />
       </Routes>
     </div>
   ) : (
