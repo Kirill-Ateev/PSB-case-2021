@@ -24,6 +24,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Courses from './components/Courses';
+import Course from './components/Courses/Course';
 
 // supervisor@test.com TESTtest123
 
@@ -60,13 +61,13 @@ const useStyles = makeStyles((theme) => ({
   progress: {
     height: '15px !important',
     borderRadius: '5px !important',
-    marginBottom: 15
+    marginBottom: 15,
   },
   meetingItem: {
-    marginRight: 30
+    marginRight: 30,
   },
   meetingButton: {
-    marginLeft: "-10px"
+    marginLeft: '-10px',
   },
 }));
 
@@ -143,13 +144,24 @@ function App({
                     ))}
                 </Card>
                 <Card title="Ближайшее мероприятие">
-                  <CardEntry text={[
+                  <CardEntry
+                    text={[
                       <strong className={classes.meetingItem}>19:00</strong>,
-                    <span className={classes.meetingItem}>Daily (Zoom)</span>,
-                    <span className={classes.meetingItem} style={{color: "gray"}}>4 декабря, 2021</span>
-                  ]}
-                  icon={<EventAvailableIcon fontSize={"large"}/>}>
-                    <SmoothButton className={classes.meetingButton} onButtonClick={() => {}} text={"Zoom"}/>
+                      <span className={classes.meetingItem}>Daily (Zoom)</span>,
+                      <span
+                        className={classes.meetingItem}
+                        style={{ color: 'gray' }}
+                      >
+                        4 декабря, 2021
+                      </span>,
+                    ]}
+                    icon={<EventAvailableIcon fontSize={'large'} />}
+                  >
+                    <SmoothButton
+                      className={classes.meetingButton}
+                      onButtonClick={() => {}}
+                      text={'Zoom'}
+                    />
                   </CardEntry>
                 </Card>
               </div>
@@ -181,12 +193,12 @@ function App({
                       label="Отдал документы в отдела кадров"
                     />
                     <FormControlLabel
-                      control={<Checkbox  />}
+                      control={<Checkbox />}
                       disabled
                       label="Получил welcome pack"
                     />
                     <FormControlLabel
-                      control={<Checkbox  />}
+                      control={<Checkbox />}
                       disabled
                       label="Познакомился с коллективом"
                     />
@@ -203,6 +215,7 @@ function App({
         />
         <Route path="project/:id" element={<Project data={data} />} />
         <Route path="courses" element={<Courses />} />
+        <Route path="courses/:id" element={<Course />} />
       </Routes>
     </div>
   ) : (

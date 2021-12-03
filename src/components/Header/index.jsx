@@ -105,7 +105,7 @@ const Header = ({ user: { isLogged }, userActions }) => {
           indicatorColor="secondary"
         >
           <Tab value={0} label="Главная" />
-          <Tab value={1} label="Проект" />
+          {/* <Tab value={1} label="Проект" /> */}
         </Tabs>
         <div className={classes.search}>
           <div className={classes.searchIconWrapper}>
