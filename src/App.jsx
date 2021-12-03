@@ -23,6 +23,7 @@ import { LinearProgressWithLabel } from './components/ProgressBar';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import Courses from './components/Courses';
 
 // supervisor@test.com TESTtest123
 
@@ -201,6 +202,7 @@ function App({
           }
         />
         <Route path="project/:id" element={<Project data={data} />} />
+        <Route path="courses" element={<Courses />} />
       </Routes>
     </div>
   ) : (
