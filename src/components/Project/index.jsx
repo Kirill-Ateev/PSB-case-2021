@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import { makeStyles } from '@mui/styles';
 import EditIcon from '@mui/icons-material/Edit';
-import { borderBottom } from '@mui/system';
 import SportsScoreIcon from '@mui/icons-material/SportsScore';
 import AdjustIcon from '@mui/icons-material/Adjust';
 import GroupIcon from '@mui/icons-material/Group';
@@ -14,7 +13,6 @@ import SmoothButton from '../SmoothButton'
 import { Breadcrumbs } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -83,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   columnRight: {
-    paddingTop: 74,
+    paddingTop: 130,
   },
   linksContainer: {
     display: 'flex',

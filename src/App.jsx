@@ -25,6 +25,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Courses from './components/Courses';
 import Course from './components/Courses/Course';
+import Mentor from './components/Mentor';
 import PeopleIcon from '@mui/icons-material/People';
 
 // Для входа:
@@ -187,7 +188,7 @@ function App({
                       </span>,
                     ]}
                     icon={<PeopleIcon fontSize="large" />}
-                    // link={}
+                    link={'/mentor/'}
                   />
                 </Card>
               </div>
@@ -243,6 +244,7 @@ function App({
         <Route path="courses" element={<Courses />} />
         <Route path="courses/:id" element={<Course setBalance={setBalance} balance={balance} />} />
         <Route path="courses/:id/question/:questionId" element={<Course setBalance={setBalance} balance={balance}/>} />
+        <Route path="mentor" element={<Mentor/>} />
       </Routes>
     </div>
   ) : (

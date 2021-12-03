@@ -9,7 +9,6 @@ import avatarImage from './assets/avatar.png';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { Link, NavLink } from 'react-router-dom';
-import {Abc} from "@mui/icons-material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const useStyles = makeStyles((theme) => ({
@@ -105,17 +104,13 @@ const useStyles = makeStyles((theme) => ({
 const Header = ({ user: { isLogged }, userActions, balance }) => {
   const classes = useStyles();
   const [isSignUpShow, setIsSignUpShow] = React.useState(false);
-<<<<<<< HEAD
-  const balance = 100_000_000;
+  // const balance = 100_000_000;
   const avatar = (
       <div className={classes.avatar}>
         <Avatar src={avatarImage}></Avatar>
         <KeyboardArrowDownIcon className={classes.arrowIcon}/>
       </div>
   )
-=======
-
->>>>>>> 0646ac4e9e37646d1f970de7faf12c22dd15323b
 
   return (
     <div className={classes.header}>
