@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   adaptationContainer: {
     display: 'flex',
     gap: 15,
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
 }));
 

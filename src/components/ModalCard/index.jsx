@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ModalCard = ({ open, onClose, children }) => {
+const ModalCard = ({ open, title, onClose, children }) => {
   const classes = useStyles();
 
   return (
@@ -41,17 +41,11 @@ const ModalCard = ({ open, onClose, children }) => {
       <div className={classes.cardContainer}>
         <div className={classes.titleContainer}>
           <Typography className={classes.title} variant="h6">
-            Название вопроса
+            {title}
           </Typography>
           <CloseIcon className={classes.closeIcon} onClick={onClose} />
         </div>
-        <Typography variant="body1">
-          По своей сути рыбатекст является альтернативой традиционному lorem
-          ipsum, который вызывает у некторых людей недоумение при попытках
-          прочитать рыбу текст. В отличии от lorem ipsum, текст рыба на русском
-          языке наполнит любой макет непонятным смыслом и придаст неповторимый
-          колорит советских времен.
-        </Typography>
+          {children}
       </div>
     </Dialog>
   );
