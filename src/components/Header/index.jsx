@@ -4,10 +4,11 @@ import { makeStyles } from '@mui/styles';
 import { alpha } from '@mui/material/styles';
 import Login from '../Login';
 import ModalCard from '../ModalCard';
-import logo from './assets/logo.png';
+import logo from './assets/PSB_logo.png';
+import coin from './assets/coin.png';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -77,6 +78,14 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  money: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 10,
+    color: '#F7A63F',
+    fontStyle: 'italic',
+    marginLeft: 30,
+},
   signUpButton: {
     color: '#ffffff !important',
   },
@@ -85,6 +94,7 @@ const useStyles = makeStyles((theme) => ({
 const Header = ({ user: { isLogged }, userActions }) => {
   const classes = useStyles();
   const [isSignUpShow, setIsSignUpShow] = React.useState(false);
+  const balance = 100_000_000;
 
   return (
     <div className={classes.header}>
@@ -104,8 +114,13 @@ const Header = ({ user: { isLogged }, userActions }) => {
           textColor="primaryWhite"
           indicatorColor="secondary"
         >
-          <Tab value={0} label="Главная" />
+          <Tab value={0} label="Главная" to='/' component={Link}>
+            </Tab>
           {/* <Tab value={1} label="Проект" /> */}
+          <div className={classes.money}>
+            {`${balance} псб.`}
+            <img src={coin} alt="coin" height={30} width={30}/>
+          </div>
         </Tabs>
         <div className={classes.search}>
           <div className={classes.searchIconWrapper}>
