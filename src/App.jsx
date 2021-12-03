@@ -59,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
   progress: {
     height: '15px !important',
     borderRadius: '5px !important',
+    marginBottom: 15
   },
   meetingItem: {
     marginRight: 30
