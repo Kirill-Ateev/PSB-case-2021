@@ -29,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
   formControlLabel: {
     marginBottom: 10,
   },
+  img: {
+    width: '50%',
+    margin: 'auto'
+  },
 }));
 
 const Exercise = ({
@@ -99,7 +103,7 @@ const Exercise = ({
       {hint.id === currentExercise.id && hint.state === false ? (
         <Alert severity="error">{currentExercise.incorrect}</Alert>
       ) : null}
-
+      <img className={classes.img} src={currentExercise.photo} />
       <div className={classes.buttonsGroup}>
         <NavLink to={`/courses/1/question/${Number(questionId) - 1}`}>
           <SmoothButton text={'Назад'} />

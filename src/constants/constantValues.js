@@ -1,3 +1,7 @@
+import illustr1 from "./assets/illustr1.png";
+import illustr2 from "./assets/illustr2.png";
+import illustr3 from "./assets/illustr3.png";
+
 export const API_URL = 'https://e-kondr01.ru/api';
 export const PROGRESS_STEP = 5;
 export const COIN_STEP = 100;
@@ -23,6 +27,7 @@ export const exercises = [
   {
     id: 1,
     text: 'Какая из перечисленных ниже задач относится к твоему проекту?',
+    photo: illustr1,
     variants: [
       {
         id: 1,
@@ -46,6 +51,7 @@ export const exercises = [
   {
     id: 2,
     text: 'Какую из перечисленных платформ мы используем в рамках данного проекта для рабочей коммуникации?',
+    photo: illustr2,
     variants: [
       {
         id: 4,
@@ -70,6 +76,7 @@ export const exercises = [
   {
     id: 3,
     text: 'Есть ли daily созвоны? Если да, то в чём их особенности?',
+    photo: illustr3,
     variants: [
       {
         id: 7,

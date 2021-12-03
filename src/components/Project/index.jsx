@@ -207,7 +207,7 @@ const Project = ({ data: { projects } }) => {
         <ProjectBlock icon={<EditIcon />} title="Наименование">
           <Typography variant="body1">{currentProject.name}</Typography>
         </ProjectBlock>
-        <ProjectBlock icon={<AdjustIcon />} title="Цель">
+        <ProjectBlock icon={<AdjustIcon />} title="Цели и задачи">
           <Typography variant="body1">{currentProject.goals}</Typography>
         </ProjectBlock>
         <ProjectBlock icon={<SportsScoreIcon />} title="Результат">

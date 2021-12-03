@@ -92,7 +92,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     margin: 20,
-    color: "white"
+    color: "white",
+    cursor: 'pointer',
   },
   arrowIcon: {
     marginLeft: 8
@@ -105,18 +106,13 @@ const useStyles = makeStyles((theme) => ({
 const Header = ({ user: { isLogged }, userActions, balance }) => {
   const classes = useStyles();
   const [isSignUpShow, setIsSignUpShow] = React.useState(false);
-<<<<<<< HEAD
-  const balance = 100_000_000;
-  const avatar = (
-      <div className={classes.avatar}>
-        <Avatar src={avatarImage}></Avatar>
-        <KeyboardArrowDownIcon className={classes.arrowIcon}/>
-      </div>
-  )
-=======
 
->>>>>>> 0646ac4e9e37646d1f970de7faf12c22dd15323b
-
+const avatar = (
+  <div className={classes.avatar}>
+    <Avatar src={avatarImage}></Avatar>
+    <KeyboardArrowDownIcon className={classes.arrowIcon}/>
+  </div>
+)
   return (
     <div className={classes.header}>
       <div className={classes.logoContainer}>
@@ -131,7 +127,6 @@ const Header = ({ user: { isLogged }, userActions, balance }) => {
           className={classes.tabs}
           variant="scrollable"
           scrollButtons="auto"
-          // onChange={handleChange}
           textColor="primaryWhite"
           indicatorColor="secondary"
         >
