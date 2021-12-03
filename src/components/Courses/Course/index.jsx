@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: 70,
     display: 'grid',
     gridTemplateColumns: '1.5fr 3fr',
-    gridTemplateRows: '95px 135px',
+    gridTemplateRows: '95px 125px',
     backgroundColor: 'white',
     minHeight: 'calc(100vh - 80px)',
   },
