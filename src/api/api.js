@@ -54,6 +54,7 @@ export default class Api {
       console.log(json);
 
       if (json instanceof Object && json.constructor === Object) {
+
         json = camelizeKeys(json);
       }
 

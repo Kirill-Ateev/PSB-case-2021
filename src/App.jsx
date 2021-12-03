@@ -76,6 +76,7 @@ const adaptationBlocks = [
 function App({
   user,
   user: { isLogged },
+  data,
   data: { projects },
   dataActions,
   userActions,
@@ -142,7 +143,7 @@ function App({
             </div>
           }
         />
-        <Route path="project/:id" element={<Project />} />
+        <Route path="project/:id" element={<Project data={data} />} />
       </Routes>
     </div>
   ) : (
