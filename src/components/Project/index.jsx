@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
     gridGap: '60px',
+    backgroundColor: 'white'
   },
   titleContainer: {
     display: 'flex',

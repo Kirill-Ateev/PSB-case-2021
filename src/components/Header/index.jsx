@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: 80,
     display: 'flex',
+    zIndex: 999,
     justifyContent: 'space-between',
     position: 'fixed',
     top: 0,

@@ -18,6 +18,10 @@ import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import { Routes, Route } from 'react-router-dom';
 import Project from './components/Project';
 import SmoothButton from './components/SmoothButton';
+import { LinearProgressWithLabel } from './components/ProgressBar';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 // supervisor@test.com TESTtest123
 
@@ -49,7 +53,11 @@ const useStyles = makeStyles((theme) => ({
   adaptationContainer: {
     display: 'flex',
     gap: 15,
-    flexDirection: 'column'
+    flexDirection: 'column',
+  },
+  progress: {
+    height: '15px !important',
+    borderRadius: '5px !important',
   },
 }));
 
@@ -126,12 +134,14 @@ function App({
                     ))}
                 </Card>
                 <Card title="Ближайшее мероприятие">
-                  <CardEntry text={[
+                  <CardEntry
+                    text={[
                       <strong>19:00</strong>,
-                    <span>Daily (Zoom)</span>,
-                    <span style={{color: "gray"}}>4 декабря, 2021</span>
-                  ]}>
-                    <SmoothButton onButtonClick={() => {}} text={"Zoom"}/>
+                      <span>Daily (Zoom)</span>,
+                      <span style={{ color: 'gray' }}>4 декабря, 2021</span>,
+                    ]}
+                  >
+                    <SmoothButton onButtonClick={() => {}} text={'Zoom'} />
                   </CardEntry>
                 </Card>
               </div>
@@ -147,6 +157,37 @@ function App({
                       />
                     ))}
                   </div>
+                </Card>
+                <Card title="Чек-лист">
+                  <LinearProgressWithLabel
+                    className={classes.progress}
+                    value={40}
+                  />
+                  <FormGroup>
+                    <FormControlLabel
+                      control={<Checkbox checked />}
+                      label="Подписал трудовой договор"
+                    />
+                    <FormControlLabel
+                      control={<Checkbox checked />}
+                      label="Отдал документы в отдела кадров"
+                    />
+                    <FormControlLabel
+                      control={<Checkbox  />}
+                      disabled
+                      label="Получил welcome pack"
+                    />
+                    <FormControlLabel
+                      control={<Checkbox  />}
+                      disabled
+                      label="Познакомился с коллективом"
+                    />
+                    <FormControlLabel
+                      control={<Checkbox />}
+                      disabled
+                      label="Узнал своего наставника"
+                    />
+                  </FormGroup>
                 </Card>
               </div>
             </div>

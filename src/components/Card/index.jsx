@@ -6,8 +6,9 @@ const useStyles = makeStyles((theme) => ({
   cardContainer: {
     position: 'relative',
     padding: '36px 50px',
-    backgroundColor: '#F0F0F0 !important',
+    backgroundColor: 'white !important',
     marginBottom: 30,
+    boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px !important',
   },
   title: {
     marginBottom: '16px !important',
