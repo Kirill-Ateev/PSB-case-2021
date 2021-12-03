@@ -51,6 +51,12 @@ const useStyles = makeStyles((theme) => ({
     gap: 15,
     flexDirection: 'column'
   },
+  meetingItem: {
+    marginRight: 30
+  },
+  meetingButton: {
+    marginLeft: "-10px"
+  },
 }));
 
 const adaptationBlocks = [
@@ -127,11 +133,11 @@ function App({
                 </Card>
                 <Card title="Ближайшее мероприятие">
                   <CardEntry text={[
-                      <strong>19:00</strong>,
-                    <span>Daily (Zoom)</span>,
-                    <span style={{color: "gray"}}>4 декабря, 2021</span>
+                      <strong className={classes.meetingItem}>19:00</strong>,
+                    <span className={classes.meetingItem}>Daily (Zoom)</span>,
+                    <span className={classes.meetingItem} style={{color: "gray"}}>4 декабря, 2021</span>
                   ]}>
-                    <SmoothButton onButtonClick={() => {}} text={"Zoom"}/>
+                    <SmoothButton className={classes.meetingButton} onButtonClick={() => {}} text={"Zoom"}/>
                   </CardEntry>
                 </Card>
               </div>
