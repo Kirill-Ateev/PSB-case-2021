@@ -1,14 +1,16 @@
 import React from 'react';
-import { AppBar, Button, Tab, Tabs } from '@mui/material';
+import { Button, Tab, Tabs, Avatar } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { alpha } from '@mui/material/styles';
 import Login from '../Login';
-import ModalCard from '../ModalCard';
 import logo from './assets/PSB_logo.png';
 import coin from './assets/coin.png';
+import avatarImage from './assets/avatar.png';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { Link, NavLink } from 'react-router-dom';
+import {Abc} from "@mui/icons-material";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -86,6 +88,15 @@ const useStyles = makeStyles((theme) => ({
     fontStyle: 'italic',
     marginLeft: 30,
 },
+  avatar: {
+    display: 'flex',
+    alignItems: 'center',
+    margin: 20,
+    color: "white"
+  },
+  arrowIcon: {
+    marginLeft: 8
+  },
   signUpButton: {
     color: '#ffffff !important',
   },
@@ -95,6 +106,12 @@ const Header = ({ user: { isLogged }, userActions }) => {
   const classes = useStyles();
   const [isSignUpShow, setIsSignUpShow] = React.useState(false);
   const balance = 100_000_000;
+  const avatar = (
+      <div className={classes.avatar}>
+        <Avatar src={avatarImage}></Avatar>
+        <KeyboardArrowDownIcon className={classes.arrowIcon}/>
+      </div>
+  )
 
   return (
     <div className={classes.header}>
@@ -132,6 +149,7 @@ const Header = ({ user: { isLogged }, userActions }) => {
             inputProps={{ 'aria-label': 'search' }}
           />
         </div>
+        {isLogged ? avatar : <div></div>}
         {isLogged ? (
           <Button
             className={classes.signUpButton}
