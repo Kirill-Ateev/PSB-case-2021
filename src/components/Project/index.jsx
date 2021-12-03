@@ -89,6 +89,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     gap: 15,
   },
+  docsContainer: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gridTemplateRows: 'auto',
+    gridRowGap: 15
+  },
   link: {
     textDecoration: 'none',
     color: theme.palette.primary.main,
@@ -162,9 +168,17 @@ const Project = ({ data: { projects } }) => {
   const params = useParams();
   const [isTeamModalOpen, setIsTeamModalOpen] = useState(false);
 
+  const projectDocs = [
+    "Техническое задание - код",
+    "Архитектура проекта",
+    "Техническое задание - дизайн",
+    "Карта коммуникаций (по RACI)"
+  ];
+
   let currentProject;
   if (projects)
     currentProject = projects.find((p) => p.id === Number(params.id));
+
   else return <LinearProgress />;
 
   return (
@@ -201,7 +215,7 @@ const Project = ({ data: { projects } }) => {
         </ProjectBlock>
         <ProjectBlock
           withButton
-          last
+          // last
           onButtonClick={() => setIsTeamModalOpen(true)}
           icon={<GroupIcon />}
           title="Команда проекта"
@@ -285,6 +299,16 @@ const Project = ({ data: { projects } }) => {
             </div>
           </div>
         </ModalCard>
+        <ProjectBlock
+            last
+            title={"Документы"}
+            icon={<EditIcon/>}
+        >
+          <div className={classes.docsContainer}>
+            {projectDocs.map(doc =>
+                <a href="" key={projectDocs.indexOf(doc)}>{doc}</a>)}
+          </div>
+        </ProjectBlock>
       </div>
       <div className={classes.columnRight}>
         <ProjectBlock withButton icon={<AccessTimeIcon />} title="План работ">
@@ -315,7 +339,7 @@ const Project = ({ data: { projects } }) => {
         <ProjectBlock icon={<EditIcon />} title="Методологии">
           <Typography>{currentProject.project_type}</Typography>
         </ProjectBlock>
-        <ProjectBlock last icon={<EditIcon />} title="Ссылки на инструменты">
+        <ProjectBlock icon={<EditIcon />} title="Ссылки на инструменты">
           <div className={classes.linksContainer}>
             {currentProject.links.map((l) => (
               <a
@@ -327,6 +351,15 @@ const Project = ({ data: { projects } }) => {
                 {l.name}
               </a>
             ))}
+          </div>
+        </ProjectBlock>
+        <ProjectBlock
+            last
+            title={"Стек проекта"}
+            icon={<EditIcon/>}
+        >
+          <div className={classes.linksContainer}>
+            Django, React, Redux
           </div>
         </ProjectBlock>
       </div>
