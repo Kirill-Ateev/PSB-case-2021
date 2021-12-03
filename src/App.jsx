@@ -15,6 +15,7 @@ import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import SchoolIcon from '@mui/icons-material/School';
 import SavingsIcon from '@mui/icons-material/Savings';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import { Routes, Route } from 'react-router-dom';
 import Project from './components/Project';
 import SmoothButton from './components/SmoothButton';
@@ -136,7 +137,8 @@ function App({
                       <strong className={classes.meetingItem}>19:00</strong>,
                     <span className={classes.meetingItem}>Daily (Zoom)</span>,
                     <span className={classes.meetingItem} style={{color: "gray"}}>4 декабря, 2021</span>
-                  ]}>
+                  ]}
+                  icon={<EventAvailableIcon fontSize={"large"}/>}>
                     <SmoothButton className={classes.meetingButton} onButtonClick={() => {}} text={"Zoom"}/>
                   </CardEntry>
                 </Card>
