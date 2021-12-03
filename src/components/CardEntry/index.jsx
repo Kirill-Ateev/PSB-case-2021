@@ -35,7 +35,10 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         color: "black",
         justifyContent: "space-between",
-        width: 350
+        flexWrap: "wrap",
+    },
+    meetingButton: {
+        marginLeft: -14
     },
     a: {
         color: '#303181',
@@ -54,8 +57,9 @@ const CardEntry = ({icon, text, link = '#', children}) => {
                         children ? text.map(item => <div>{item}</div>)
                     : text}</div>
                 </div>
-                <div className={classes.link}>
-                    {children || <Link to={link}>Перейти →</Link>}
+                <div>
+                    {children ? <div className={classes.meetingButton}>{children}</div>
+                    : <Link to={link}>Перейти →</Link>}
                 </div>
             </div>
         </div>
