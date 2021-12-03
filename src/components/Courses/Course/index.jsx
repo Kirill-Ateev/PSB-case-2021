@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: 'min(140px, 8%)',
     paddingTop: 70,
     display: 'grid',
-    gridTemplateColumns: '2fr 3fr',
+    gridTemplateColumns: '1.5fr 3fr',
     backgroundColor: 'white',
     minHeight: 'calc(100vh - 80px)',
   },
@@ -54,10 +54,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Course = () => {
+const Course = ({balance, setBalance}) => {
   const classes = useStyles();
   const { id, questionId } = useParams();
   const [open, setOpen] = useState({});
+  const [progress, setProgress] = useState(0)
 
   return (
     <div className={classes.courseContainer}>
@@ -66,7 +67,7 @@ const Course = () => {
           <Typography className={classes.progressTitle}>
             Прогресс по курсу:
           </Typography>
-          <LinearProgressWithLabel className={classes.progress} value={40} />
+          <LinearProgressWithLabel className={classes.progress} value={progress} />
         </div>
         <List component="nav">
           <ListItemButton onClick={() => setOpen({ ...open, q1: !open.q1 })}>
@@ -184,7 +185,7 @@ const Course = () => {
         </List>
       </div>
       <div className={classes.main}>
-        {questionId ? <Exercise questionId={questionId} /> : null}
+        {questionId ? <Exercise questionId={questionId} progress={progress} setProgress={setProgress} setBalance={setBalance} balance={balance}/> : null}
       </div>
     </div>
   );

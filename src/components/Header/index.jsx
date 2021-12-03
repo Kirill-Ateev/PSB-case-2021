@@ -91,10 +91,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = ({ user: { isLogged }, userActions }) => {
+const Header = ({ user: { isLogged }, userActions, balance }) => {
   const classes = useStyles();
   const [isSignUpShow, setIsSignUpShow] = React.useState(false);
-  const balance = 100_000_000;
+
 
   return (
     <div className={classes.header}>
