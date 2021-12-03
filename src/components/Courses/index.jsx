@@ -2,7 +2,10 @@ import React from 'react';
 import { courseCardData } from '../../constants/constantValues';
 import CourseCard from './CourseCard';
 import { makeStyles } from '@mui/styles';
-import { Typography } from '@mui/material';
+import {Breadcrumbs, Typography} from '@mui/material';
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import {Link} from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
 
 const useStyles = makeStyles((theme) => ({
   coursesPageContainer: {
@@ -21,6 +24,14 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold !important',
     marginBottom: '30px !important',
   },
+  breadcrumbs: {
+    marginBottom: 30
+  },
+  iconContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 }));
 
 const Courses = () => {
@@ -28,6 +39,21 @@ const Courses = () => {
 
   return (
     <div className={classes.coursesPageContainer}>
+      <div className={classes.breadcrumbs}>
+        <Breadcrumbs
+            separator={<NavigateNextIcon fontSize="small"/>}
+            aria-label="breadcrumb"
+        >
+          <Link className={classes.iconContainer}
+                underline="hover" to="/">
+            <HomeIcon/>
+          </Link>
+          <Link underline="hover" to="">
+            Вводные курсы
+          </Link>
+
+        </Breadcrumbs>
+      </div>
       <Typography className={classes.title} variant="h4">
         Вводные курсы
       </Typography>

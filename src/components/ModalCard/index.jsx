@@ -10,6 +10,12 @@ import React from 'react';
 import { makeStyles } from '@mui/styles';
 import CloseIcon from '@mui/icons-material/Close';
 
+import { Breadcrumbs } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import {Link} from 'react-router-dom';
+
 const useStyles = makeStyles((theme) => ({
   cardContainer: {
     margin: '20px 30px',
@@ -26,7 +32,16 @@ const useStyles = makeStyles((theme) => ({
   closeIcon: {
     paddingBottom: 13,
     cursor: 'pointer'
-  }
+  },
+  // breadcrumbs: {
+  //   marginBottom: 30,
+  //   color: 'grey !important'
+  // },
+  // iconContainer: {
+  //   display: 'flex',
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // }
 }));
 
 const ModalCard = ({ open, title, onClose, children }) => {
@@ -41,6 +56,21 @@ const ModalCard = ({ open, title, onClose, children }) => {
       transitionDuration={250}
     >
       <div className={classes.cardContainer}>
+        {/*<div className={classes.breadcrumbs}>*/}
+        {/*  <Breadcrumbs*/}
+        {/*      separator={<NavigateNextIcon fontSize="small"/>}*/}
+        {/*      aria-label="breadcrumb"*/}
+        {/*  >*/}
+        {/*    <Link className={classes.iconContainer}*/}
+        {/*          underline="hover" to="/">*/}
+        {/*      <HomeIcon/>*/}
+        {/*    </Link>*/}
+        {/*    <Link underline="hover" to="">*/}
+        {/*      Карточка проекта*/}
+        {/*    </Link>*/}
+
+        {/*  </Breadcrumbs>*/}
+        {/*</div>*/}
         <div className={classes.titleContainer}>
           <Typography className={classes.title} variant="h5">
             {title}
