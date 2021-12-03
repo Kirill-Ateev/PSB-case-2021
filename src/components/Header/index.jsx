@@ -7,6 +7,7 @@ import ModalCard from '../ModalCard';
 import logo from './assets/logo.png';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
+import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -80,14 +81,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = ({ user: { isLogged } = {} }) => {
+const Header = ({ user: { isLogged }, userActions }) => {
   const classes = useStyles();
   const [isSignUpShow, setIsSignUpShow] = React.useState(false);
 
   return (
     <div className={classes.header}>
       <div className={classes.logoContainer}>
-        <img className={classes.logo} alt="logo" src={logo} />
+        <NavLink to="/">
+          <img className={classes.logo} alt="logo" src={logo} />
+        </NavLink>
       </div>
       <Login open={isSignUpShow} handleClose={() => setIsSignUpShow(false)} />
       <div className={classes.userToolsContainer}>
@@ -116,7 +119,7 @@ const Header = ({ user: { isLogged } = {} }) => {
         {isLogged ? (
           <Button
             className={classes.signUpButton}
-            onClick={() => setIsSignUpShow(true)}
+            onClick={() => userActions.logout()}
           >
             Выйти
           </Button>

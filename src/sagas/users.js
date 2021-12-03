@@ -80,14 +80,12 @@ export function* requestProfile(action) {
 
 export function* logout(action) {
   try {
-    const response = yield call(Api.post, 'logout');
-
-    if (response.ok === 1) {
+ 
       localStorage.removeItem('token');
       yield put({
         type: types.CLEAR_USER,
       });
-    }
+    
   } catch (error) {
     yield put({
       type: types.NOT_CLEAR_USER,
