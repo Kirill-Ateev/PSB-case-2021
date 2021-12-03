@@ -61,13 +61,15 @@ const useStyles = makeStyles((theme) => ({
   progress: {
     height: '15px !important',
     borderRadius: '5px !important',
-    marginBottom: 15,
   },
   meetingItem: {
     marginRight: 30,
   },
   meetingButton: {
     marginLeft: '-10px',
+  },
+  checkboxes: {
+    marginTop: 15,
   },
 }));
 
@@ -183,7 +185,7 @@ function App({
                     className={classes.progress}
                     value={40}
                   />
-                  <FormGroup>
+                  <FormGroup className={classes.checkboxes}>
                     <FormControlLabel
                       control={<Checkbox checked />}
                       label="Подписал трудовой договор"
