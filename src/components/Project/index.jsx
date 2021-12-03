@@ -9,6 +9,7 @@ import AdjustIcon from '@mui/icons-material/Adjust';
 import GroupIcon from '@mui/icons-material/Group';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ModalCard from '../ModalCard';
+import SmoothButton from '../SmoothButton'
 
 const useStyles = makeStyles((theme) => ({
   projectContainer: {
@@ -98,13 +99,7 @@ const ProjectBlock = ({
         {icon}
         <Typography variant="h6">{title}</Typography>
         {withButton ? (
-          <Button
-            className={classes.button}
-            onClick={onButtonClick}
-            variant="outlined"
-          >
-            Подробнее
-          </Button>
+            <SmoothButton onButtonClick={onButtonClick} text={"Подробнее"}/>
         ) : null}
       </div>
       {children}

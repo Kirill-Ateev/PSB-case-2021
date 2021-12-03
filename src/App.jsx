@@ -17,6 +17,7 @@ import SavingsIcon from '@mui/icons-material/Savings';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import { Routes, Route } from 'react-router-dom';
 import Project from './components/Project';
+import SmoothButton from './components/SmoothButton';
 
 // supervisor@test.com TESTtest123
 
@@ -124,7 +125,15 @@ function App({
                       />
                     ))}
                 </Card>
-                <Card title="Ближайшее мероприятие"></Card>
+                <Card title="Ближайшее мероприятие">
+                  <CardEntry text={[
+                      <strong>19:00</strong>,
+                    <span>Daily (Zoom)</span>,
+                    <span style={{color: "gray"}}>4 декабря, 2021</span>
+                  ]}>
+                    <SmoothButton onButtonClick={() => {}} text={"Zoom"}/>
+                  </CardEntry>
+                </Card>
               </div>
               <div className={classes.column}>
                 <Card title="Адаптация">
