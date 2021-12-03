@@ -11,6 +11,12 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ModalCard from '../ModalCard';
 import SmoothButton from '../SmoothButton'
 
+import { Breadcrumbs } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import {Link} from 'react-router-dom';
+
 const useStyles = makeStyles((theme) => ({
   projectContainer: {
     paddingLeft: 'min(140px, 8%)',
@@ -117,6 +123,14 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '18px !important',
   },
   column: {},
+  breadcrumbs: {
+    marginBottom: 30
+  },
+    iconContainer: {
+      display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 }));
 
 const ProjectBlock = ({
@@ -156,6 +170,23 @@ const Project = ({ data: { projects } }) => {
   return (
     <div className={classes.projectContainer}>
       <div className={classes.column}>
+
+        <div className={classes.breadcrumbs}>
+            <Breadcrumbs
+                separator={<NavigateNextIcon fontSize="small"/>}
+                aria-label="breadcrumb"
+            >
+              <Link className={classes.iconContainer}
+                    underline="hover" to="/">
+              <HomeIcon/>
+              </Link>
+              <Link underline="hover" to="">
+              Карточка проекта
+              </Link>
+
+            </Breadcrumbs>
+        </div>
+
         <Typography className={classes.containerTitle} variant="h4">
           Карточка проекта
         </Typography>
