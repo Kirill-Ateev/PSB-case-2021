@@ -91,7 +91,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     margin: 20,
-    color: "white"
+    color: "white",
+    cursor: 'pointer',
   },
   arrowIcon: {
     marginLeft: 8
@@ -104,7 +105,6 @@ const useStyles = makeStyles((theme) => ({
 const Header = ({ user: { isLogged }, userActions, balance }) => {
   const classes = useStyles();
   const [isSignUpShow, setIsSignUpShow] = React.useState(false);
-  // const balance = 100_000_000;
   const avatar = (
       <div className={classes.avatar}>
         <Avatar src={avatarImage}></Avatar>
@@ -126,13 +126,11 @@ const Header = ({ user: { isLogged }, userActions, balance }) => {
           className={classes.tabs}
           variant="scrollable"
           scrollButtons="auto"
-          // onChange={handleChange}
           textColor="primaryWhite"
           indicatorColor="secondary"
         >
           <Tab value={0} label="Главная" to='/' component={Link}>
             </Tab>
-          {/* <Tab value={1} label="Проект" /> */}
           <div className={classes.money}>
             {`${balance} псб.`}
             <img src={coin} alt="coin" height={30} width={30}/>
@@ -165,8 +163,6 @@ const Header = ({ user: { isLogged }, userActions, balance }) => {
           </Button>
         )}
       </div>
-      {/* <Button onClick={() => setOpen(true)}>card</Button>
-      <ModalCard open={open} onClose={() => setOpen(false)} /> */}
     </div>
   );
 };
