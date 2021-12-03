@@ -7,6 +7,8 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         padding: 25,
         width: 315,
+        boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px !important',
+
     },
     text: {
         marginBottom: '5px !important'

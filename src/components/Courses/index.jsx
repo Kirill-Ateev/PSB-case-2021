@@ -5,12 +5,17 @@ import { makeStyles } from '@mui/styles';
 import { Typography } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
+  coursesPageContainer: {
+    display: 'flex',
+    gap: 30,
+    paddingTop: 70,
+    paddingLeft: 'min(140px, 8%)',
+    paddingRight: 'min(140px, 8%)',
+    flexDirection: 'column'
+  },
   coursesContainer: {
     display: 'flex',
     gap: 20,
-    paddingTop: 'min(140px, 8%)',
-    paddingLeft: 'min(140px, 8%)',
-    paddingRight: 'min(140px, 8%)',
   },
   title: {
     fontWeight: 'bold !important',
@@ -22,13 +27,15 @@ const Courses = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.coursesContainer}>
+    <div className={classes.coursesPageContainer}>
       <Typography className={classes.title} variant="h4">
         Вводные курсы
       </Typography>
-      {courseCardData.map((card) => (
-        <CourseCard text={card.text} link={card.link} />
-      ))}
+      <div className={classes.coursesContainer}>
+        {courseCardData.map((card) => (
+          <CourseCard text={card.text} link={card.link} />
+        ))}
+      </div>
     </div>
   );
 };
