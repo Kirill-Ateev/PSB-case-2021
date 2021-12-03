@@ -1,5 +1,5 @@
 import { LinearProgress, Typography, Button } from '@mui/material';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import { makeStyles } from '@mui/styles';
 import EditIcon from '@mui/icons-material/Edit';
@@ -32,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 25,
     marginBottom: 25,
   },
+  projectBlockLast: {
+    paddingBottom: 25,
+    marginBottom: 25,
+  },
   containerTitle: {
     fontWeight: 'bold !important',
     marginBottom: '30px !important',
@@ -41,16 +45,35 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  membersModalContainer: {
+    position: 'relative',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    gap: 25,
+    marginBottom: 40,
   },
   memberContainer: {
     display: 'flex',
+    marginTop: 5,
     flexDirection: 'column',
     alignItems: 'center',
   },
+  memberModalContainer: {
+    display: 'flex',
+    marginTop: 5,
+    flexDirection: 'column',
+    alignItems: 'center',
+    minWidth: 170,
+  },
   memberName: {
+    marginTop: 5,
     textAlign: 'center',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   columnRight: {
     paddingTop: 74,
@@ -81,6 +104,17 @@ const useStyles = makeStyles((theme) => ({
     objectFit: 'cover',
     cursor: 'pointer',
   },
+  memberRole: {
+    fontSize: '15px !important',
+    marginBottom: `-7px !important`,
+    marginTop: `15px !important`,
+  },
+  modalContainer: {
+    minWidth: 780,
+  },
+  modalSubtitle: {
+    marginBottom: '18px !important',
+  },
   column: {},
 }));
 
@@ -90,11 +124,12 @@ const ProjectBlock = ({
   children,
   text,
   withButton = false,
+  last = false,
   onButtonClick = () => {},
 }) => {
   const classes = useStyles();
   return (
-    <div className={classes.projectBlock}>
+    <div className={last ? classes.projectBlockLast : classes.projectBlock}>
       <div className={classes.titleContainer}>
         {icon}
         <Typography variant="h6">{title}</Typography>
@@ -134,17 +169,24 @@ const Project = ({ data: { projects } }) => {
         </ProjectBlock>
         <ProjectBlock
           withButton
+          last
           onButtonClick={() => setIsTeamModalOpen(true)}
           icon={<GroupIcon />}
           title="Команда проекта"
         >
           <div className={classes.membersContainer}>
-            {currentProject.members.map((m) => (
+            {currentProject.members.slice(0, 4).map((m) => (
               <div className={classes.memberContainer}>
                 <img className={classes.memberAvatar} src={m.photo} />
-                <Typography className={classes.memberName} variant="body1">
-                  {m.name}
-                </Typography>
+
+                <div className={classes.memberName}>
+                  <Typography variant="body1">
+                    {m.name.split(' ')[0]}
+                  </Typography>
+                  <Typography variant="body1">
+                    {m.name.split(' ')[1]}
+                  </Typography>
+                </div>
               </div>
             ))}
           </div>
@@ -154,7 +196,62 @@ const Project = ({ data: { projects } }) => {
           onClose={() => setIsTeamModalOpen(false)}
           title="Команда проекта"
         >
-          Команды
+          <div className={classes.modalContainer}>
+            <Typography className={classes.modalSubtitle} variant="h6">
+              Руководство
+            </Typography>
+            <div className={classes.membersModalContainer}>
+              {currentProject.members.slice(0, 2).map((m) => (
+                <div className={classes.memberModalContainer}>
+                  <img className={classes.memberAvatar} src={m.photo} />
+                  <Typography className={classes.memberRole} variant="h6">
+                    {m.role}
+                  </Typography>
+                  <div className={classes.memberName}>
+                    <Typography variant="body1">
+                      {`${m.name.split(' ')[0]} ${m.name.split(' ')[1][0]}.`}
+                    </Typography>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <Typography className={classes.modalSubtitle} variant="h6">
+              Команда разработки и тестирования
+            </Typography>
+            <div className={classes.membersModalContainer}>
+              {currentProject.members.slice(2, 4).map((m) => (
+                <div className={classes.memberModalContainer}>
+                  <img className={classes.memberAvatar} src={m.photo} />
+                  <Typography className={classes.memberRole} variant="h6">
+                    {m.role}
+                  </Typography>
+                  <div className={classes.memberName}>
+                    <Typography variant="body1">
+                      {`${m.name.split(' ')[0]} ${m.name.split(' ')[1][0]}.`}
+                    </Typography>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <Typography className={classes.modalSubtitle} variant="h6">
+              Команда внедрения
+            </Typography>
+            <div className={classes.membersModalContainer}>
+              {currentProject.members.slice(0, 4).map((m) => (
+                <div className={classes.memberModalContainer}>
+                  <img className={classes.memberAvatar} src={m.photo} />
+                  <Typography className={classes.memberRole} variant="h6">
+                    {m.role}
+                  </Typography>
+                  <div className={classes.memberName}>
+                    <Typography variant="body1">
+                      {`${m.name.split(' ')[0]} ${m.name.split(' ')[1][0]}.`}
+                    </Typography>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </ModalCard>
       </div>
       <div className={classes.columnRight}>
@@ -186,7 +283,7 @@ const Project = ({ data: { projects } }) => {
         <ProjectBlock icon={<EditIcon />} title="Методологии">
           <Typography>{currentProject.project_type}</Typography>
         </ProjectBlock>
-        <ProjectBlock icon={<EditIcon />} title="Ссылки на инструменты">
+        <ProjectBlock last icon={<EditIcon />} title="Ссылки на инструменты">
           <div className={classes.linksContainer}>
             {currentProject.links.map((l) => (
               <a

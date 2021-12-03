@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     marginBottom: '16px !important',
+    fontWeight: 'bold !important',
   },
   closeIcon: {
     paddingBottom: 13,
@@ -35,12 +36,13 @@ const ModalCard = ({ open, title, onClose, children }) => {
     <Dialog
       className={classes.dialog}
       onClose={onClose}
+      maxWidth={'xl'}
       open={open}
       transitionDuration={250}
     >
       <div className={classes.cardContainer}>
         <div className={classes.titleContainer}>
-          <Typography className={classes.title} variant="h6">
+          <Typography className={classes.title} variant="h5">
             {title}
           </Typography>
           <CloseIcon className={classes.closeIcon} onClick={onClose} />
