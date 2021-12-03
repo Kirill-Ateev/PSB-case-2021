@@ -27,6 +27,7 @@ import Courses from './components/Courses';
 import Course from './components/Courses/Course';
 import PeopleIcon from '@mui/icons-material/People';
 
+// Для входа:
 // supervisor@test.com TESTtest123
 
 const useStyles = makeStyles((theme) => ({
@@ -74,8 +75,8 @@ const useStyles = makeStyles((theme) => ({
   },
   missingMentor: {
     color: 'grey',
-    marginTop: 5
-  }
+    marginTop: 5,
+  },
 }));
 
 const adaptationBlocks = [
@@ -140,6 +141,7 @@ function App({
                   </Typography>
                 </Card>
                 <Card title="Мои проекты">
+                <div className={classes.adaptationContainer}>
                   {projects &&
                     projects.map((p) => (
                       <CardEntry
@@ -149,6 +151,7 @@ function App({
                         link={`/project/${p.id}`}
                       />
                     ))}
+                    </div>
                 </Card>
 
                 <Card title="Ближайшее мероприятие">
@@ -174,14 +177,18 @@ function App({
                 </Card>
 
                 <Card title="Наставник">
-                      <CardEntry
-                          text={[<span>Сейчас не назначен наставник</span>,
-                            <span className={classes.missingMentor}>Чтобы мы подобрали для вас лучшего, пройдите 3 психологических теста</span>]}
-                          icon={<PeopleIcon fontSize="large" />}
-                          // link={}
-                      />
+                  <CardEntry
+                    text={[
+                      <span>Сейчас не назначен наставник</span>,
+                      <span className={classes.missingMentor}>
+                        Чтобы мы подобрали для вас лучшего, пройдите 3
+                        психологических теста
+                      </span>,
+                    ]}
+                    icon={<PeopleIcon fontSize="large" />}
+                    // link={}
+                  />
                 </Card>
-
               </div>
               <div className={classes.column}>
                 <Card title="Адаптация">
@@ -234,6 +241,7 @@ function App({
         <Route path="project/:id" element={<Project data={data} />} />
         <Route path="courses" element={<Courses />} />
         <Route path="courses/:id" element={<Course />} />
+        <Route path="courses/:id/question/:questionId" element={<Course />} />
       </Routes>
     </div>
   ) : (
