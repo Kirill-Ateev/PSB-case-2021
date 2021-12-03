@@ -25,6 +25,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Courses from './components/Courses';
 import Course from './components/Courses/Course';
+import PeopleIcon from '@mui/icons-material/People';
 
 // supervisor@test.com TESTtest123
 
@@ -71,6 +72,10 @@ const useStyles = makeStyles((theme) => ({
   checkboxes: {
     marginTop: 15,
   },
+  missingMentor: {
+    color: 'grey',
+    marginTop: 5
+  }
 }));
 
 const adaptationBlocks = [
@@ -145,6 +150,7 @@ function App({
                       />
                     ))}
                 </Card>
+
                 <Card title="Ближайшее мероприятие">
                   <CardEntry
                     text={[
@@ -166,6 +172,16 @@ function App({
                     />
                   </CardEntry>
                 </Card>
+
+                <Card title="Наставник">
+                      <CardEntry
+                          text={[<span>Сейчас не назначен наставник</span>,
+                            <span className={classes.missingMentor}>Чтобы мы подобрали для вас лучшего, пройдите 3 психологических теста</span>]}
+                          icon={<PeopleIcon fontSize="large" />}
+                          // link={}
+                      />
+                </Card>
+
               </div>
               <div className={classes.column}>
                 <Card title="Адаптация">
