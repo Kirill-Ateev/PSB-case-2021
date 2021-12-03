@@ -4,6 +4,10 @@ export function login(email, password) {
   return { type: types.LOGIN, email, password };
 }
 
+export function checkAuthorized() {
+  return { type: types.CHECK_AUTHORIZED };
+}
+
 export function requestProfile() {
   return { type: types.REQUEST_USER };
 }

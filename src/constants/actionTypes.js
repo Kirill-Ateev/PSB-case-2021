@@ -1,5 +1,6 @@
 //User
 export const LOGIN = 'LOGIN';
+export const CHECK_AUTHORIZED = 'CHECK_AUTHORIZED';
 export const REQUEST_USER = 'REQUEST_USER';
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const NOT_RECEIVE_USER = 'NOT_RECEIVE_USER';

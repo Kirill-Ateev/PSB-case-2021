@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LoginModal = ({ open, handleClose, userActions, login, user }) => {
+export const LoginModal = ({ open, handleClose, userActions, login, user }) => {
   const theme = useTheme();
   const isFullScreen = useMediaQuery(theme.breakpoints.down('md'));
   return (
@@ -90,7 +90,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-function SignIn({ handleLogin }) {
+export function SignIn({ handleLogin }) {
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

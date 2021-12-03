@@ -4,10 +4,10 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
   cardContainer: {
-      position: 'relative',
+    position: 'relative',
     padding: '36px 50px',
     backgroundColor: '#F0F0F0 !important',
-marginBottom: 30
+    marginBottom: 30,
   },
   title: {
     marginBottom: '16px !important',
@@ -20,7 +20,7 @@ const Card = ({ title, children }) => {
 
   return (
     <Paper className={classes.cardContainer}>
-      <Typography className={classes.title} variant="h5">
+      <Typography className={classes.title} variant="h4">
         {title}
       </Typography>
       {children}

@@ -4,7 +4,7 @@ import * as types from '../constants/actionTypes';
 
 export function* getProjects(action) {
   try {
-    const response = yield call(Api.get, '/projects');
+    const response = yield call(Api.get, 'projects');
 
     yield put({
       type: types.RECEIVE_PROJECTS,

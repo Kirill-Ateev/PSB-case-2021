@@ -1,7 +1,7 @@
 import * as types from '../constants/actionTypes';
 
-export function getKpiData() {
-  return { type: types.REQUEST_DATA };
+export function getProjects() {
+  return { type: types.REQUEST_PROJECTS };
 }
 
 export function getKpiEntries(id) {

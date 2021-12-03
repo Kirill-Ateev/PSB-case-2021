@@ -4,22 +4,47 @@ import * as types from '../constants/actionTypes';
 
 export function* login(action) {
   try {
-    const response = yield call(Api.post, 'login', {
+    const response = yield call(Api.post, 'auth/jwt/create', {
       data: {
         email: action.email,
         password: action.password,
       },
     });
 
-    if (response.accessToken && response.userDto.id) {
-      localStorage.setItem('token', response.accessToken);
+    if (response.access) {
+      localStorage.setItem('token', response.access);
+      const responseUserData = yield call(Api.get, 'auth/users/me/');
+
       yield put({
         type: types.RECEIVE_USER,
-        id: response.userDto.id,
-        email: response.userDto.email,
-        isActivated: response.userDto.isActivated,
+        id: responseUserData.id,
+        email: responseUserData.email,
+        rating: responseUserData.rating,
+        group: responseUserData.group
       });
     }
+  } catch (error) {
+    yield put({
+      type: types.NOT_RECEIVE_USER,
+      errors: error.response,
+      error,
+    });
+    yield put({ type: types.NETWORK_ERROR, error });
+  }
+}
+
+export function* checkAuthorized(action) {
+  try {
+    const response = yield call(Api.get, 'auth/users/me/');
+
+      yield put({
+        type: types.RECEIVE_USER,
+        id: response.id,
+        email: response.email,
+        rating: response.rating,
+        group: response.group
+      });
+    
   } catch (error) {
     yield put({
       type: types.NOT_RECEIVE_USER,
@@ -75,6 +100,7 @@ export function* logout(action) {
 
 export default function* watchUsers() {
   yield takeEvery(types.LOGIN, login);
+  yield takeEvery(types.CHECK_AUTHORIZED, checkAuthorized);
   yield takeEvery(types.REQUEST_USER, requestProfile);
   yield takeEvery(types.LOGOUT, logout);
 }

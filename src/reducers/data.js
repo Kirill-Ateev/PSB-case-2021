@@ -10,7 +10,7 @@ import {
 export default function data(
   state = {
     isFetching: false,
-    kpi: null,
+    projects: null,
     errors: null,
   },
   action

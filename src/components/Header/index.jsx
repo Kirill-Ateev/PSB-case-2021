@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = () => {
+const Header = ({ user: { isLogged } = {} }) => {
   const classes = useStyles();
   const [isSignUpShow, setIsSignUpShow] = React.useState(false);
 
@@ -113,12 +113,21 @@ const Header = () => {
             inputProps={{ 'aria-label': 'search' }}
           />
         </div>
-        <Button
-          className={classes.signUpButton}
-          onClick={() => setIsSignUpShow(true)}
-        >
-          Sign up
-        </Button>
+        {isLogged ? (
+          <Button
+            className={classes.signUpButton}
+            onClick={() => setIsSignUpShow(true)}
+          >
+            Выйти
+          </Button>
+        ) : (
+          <Button
+            className={classes.signUpButton}
+            onClick={() => setIsSignUpShow(true)}
+          >
+            Войти
+          </Button>
+        )}
       </div>
       {/* <Button onClick={() => setOpen(true)}>card</Button>
       <ModalCard open={open} onClose={() => setOpen(false)} /> */}

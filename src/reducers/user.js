@@ -10,7 +10,7 @@ import {
 
 export default function user(
   state = {
-    isLogged: false,
+    isLogged: null,
     isFetching: false,
     isActivated: false,
     error: null,
@@ -34,7 +34,8 @@ export default function user(
         isFetching: false,
         id: action.id,
         email: action.email,
-        isActivated: action.isActivated,
+        rating: action.rating,
+        group: action.group,
         error: null,
       };
 
