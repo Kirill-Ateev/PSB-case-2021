@@ -53,7 +53,7 @@
   min-height: 100%;
   padding-left: 320px;
   -webkit-overflow-scrolling: touch;
-  background-color: var(--app-background);
+  background-color: white;
 }
 
 @media (max-width: 768px) {

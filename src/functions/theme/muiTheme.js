@@ -18,5 +18,12 @@ export default function composeTheme() {
       },
       psbMain: '#303181',
     },
+    // typography: {
+    //   fontFamily: [
+    //     'Poppins',
+    //     '"Segoe UI"',
+    //     'sans-serif',
+    //   ].join(','),
+    // },
   });
 }

@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import './App.css';
 import Header from './components/Header';
 import Card from './components/Card';
+import CardEntry from "./components/CardEntry";
 import { makeStyles } from '@mui/styles';
 import { bindActionCreators } from 'redux';
 import * as dataActions from './actions/data';
@@ -61,6 +62,9 @@ if (isLogged===null) return <LinearProgress />
             <Typography className={classes.helloCardSubtitle} variant="body1">Хорошего тебе дня</Typography>
           </Card>
           <Card title="Привет, Егор!" />
+          <Card title={"Мои проекты"}>
+            <CardEntry text="Личный кабинет “PSB IT HERO”"/>
+          </Card>
         </div>
         <div className={classes.column}>
           <Card title="Привет, Егор!" />
