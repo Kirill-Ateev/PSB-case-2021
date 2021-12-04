@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Card from './components/Card';
@@ -110,7 +110,9 @@ function App({
   userActions,
 }) {
   const classes = useStyles();
-  const [balance, setBalance] = React.useState(100_000_000)
+  const [balance, setBalance] = useState(100_000_000);
+  const [progress, setProgress] = useState(0);
+  const [values, setValues] = useState({});
 
   useEffect(() => {
     if (isLogged) dataActions.getProjects();
@@ -121,7 +123,12 @@ function App({
 
   return isLogged ? (
     <div className="App">
-      <Header className="Header" user={user} userActions={userActions} balance={balance} />
+      <Header
+        className="Header"
+        user={user}
+        userActions={userActions}
+        balance={balance}
+      />
       <Routes>
         <Route
           exact
@@ -143,17 +150,17 @@ function App({
                   </Typography>
                 </Card>
                 <Card title="Мои проекты">
-                <div className={classes.adaptationContainer}>
-                  {projects &&
-                    projects.map((p) => (
-                      <CardEntry
-                        key={p.id}
-                        text={p.name}
-                        icon={<WorkOutlineIcon fontSize="large" />}
-                        link={`/project/${p.id}`}
-                      />
-                    ))}
-                    </div>
+                  <div className={classes.adaptationContainer}>
+                    {projects &&
+                      projects.map((p) => (
+                        <CardEntry
+                          key={p.id}
+                          text={p.name}
+                          icon={<WorkOutlineIcon fontSize="large" />}
+                          link={`/project/${p.id}`}
+                        />
+                      ))}
+                  </div>
                 </Card>
 
                 <Card title="Ближайшее мероприятие">
@@ -242,9 +249,36 @@ function App({
         />
         <Route path="project/:id" element={<Project data={data} />} />
         <Route path="courses" element={<Courses />} />
-        <Route path="courses/:id" element={<Course setBalance={setBalance} balance={balance} />} />
-        <Route path="courses/:id/question/:questionId" element={<Course setBalance={setBalance} balance={balance}/>} />
-        <Route path="mentor" element={<Mentor/>} />
+        <Route
+          path="courses/:id"
+          element={
+            <Course
+              values={values}
+              setValues={setValues}
+              progress={progress}
+              setProgress={setProgress}
+              setBalance={setBalance}
+              balance={balance}
+            />
+          }
+        />
+        <Route
+          path="courses/:id/question/:questionId"
+          element={
+            <Course
+              values={values}
+              setValues={setValues}
+              progress={progress}
+              setProgress={setProgress}
+              setBalance={setBalance}
+              progress={progress}
+              setProgress={setProgress}
+              setBalance={setBalance}
+              balance={balance}
+            />
+          }
+        />
+        <Route path="mentor" element={<Mentor />} />
       </Routes>
     </div>
   ) : (

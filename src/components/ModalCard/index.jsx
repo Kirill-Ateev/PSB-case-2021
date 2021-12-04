@@ -14,7 +14,7 @@ import { Breadcrumbs } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   cardContainer: {
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
   closeIcon: {
     paddingBottom: 13,
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   // breadcrumbs: {
   //   marginBottom: 30,
@@ -77,7 +77,7 @@ const ModalCard = ({ open, title, onClose, children }) => {
           </Typography>
           <CloseIcon className={classes.closeIcon} onClick={onClose} />
         </div>
-          {children}
+        {children}
       </div>
     </Dialog>
   );

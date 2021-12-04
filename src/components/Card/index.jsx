@@ -20,7 +20,7 @@ const Card = ({ title, children }) => {
   const classes = useStyles();
 
   return (
-    <Paper  className={classes.cardContainer} elevation={0}>
+    <Paper className={classes.cardContainer} elevation={0}>
       <Typography className={classes.title} variant="h4">
         {title}
       </Typography>

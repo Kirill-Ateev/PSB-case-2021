@@ -68,11 +68,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Course = ({ balance, setBalance }) => {
+const Course = ({
+  values,
+  setValues,
+  balance,
+  setBalance,
+  progress,
+  setProgress,
+}) => {
   const classes = useStyles();
   const { id, questionId } = useParams();
   const [open, setOpen] = useState({});
-  const [progress, setProgress] = useState(0);
 
   return (
     <div className={classes.courseContainer}>
@@ -222,6 +228,8 @@ const Course = ({ balance, setBalance }) => {
       <div className={classes.main}>
         {questionId ? (
           <Exercise
+            values={values}
+            setValues={setValues}
             questionId={questionId}
             progress={progress}
             setProgress={setProgress}

@@ -86,16 +86,16 @@ const useStyles = makeStyles((theme) => ({
     color: '#F7A63F',
     fontStyle: 'italic',
     marginLeft: 30,
-},
+  },
   avatar: {
     display: 'flex',
     alignItems: 'center',
     margin: 20,
-    color: "white",
+    color: 'white',
     cursor: 'pointer',
   },
   arrowIcon: {
-    marginLeft: 8
+    marginLeft: 8,
   },
   signUpButton: {
     color: '#ffffff !important',
@@ -106,11 +106,11 @@ const Header = ({ user: { isLogged }, userActions, balance }) => {
   const classes = useStyles();
   const [isSignUpShow, setIsSignUpShow] = React.useState(false);
   const avatar = (
-      <div className={classes.avatar}>
-        <Avatar src={avatarImage}></Avatar>
-        <KeyboardArrowDownIcon className={classes.arrowIcon}/>
-      </div>
-  )
+    <div className={classes.avatar}>
+      <Avatar src={avatarImage}></Avatar>
+      <KeyboardArrowDownIcon className={classes.arrowIcon} />
+    </div>
+  );
 
   return (
     <div className={classes.header}>
@@ -129,11 +129,10 @@ const Header = ({ user: { isLogged }, userActions, balance }) => {
           textColor="primaryWhite"
           indicatorColor="secondary"
         >
-          <Tab value={0} label="Главная" to='/' component={Link}>
-            </Tab>
+          <Tab value={0} label="Главная" to="/" component={Link}></Tab>
           <div className={classes.money}>
             {`${balance} псб.`}
-            <img src={coin} alt="coin" height={30} width={30}/>
+            <img src={coin} alt="coin" height={30} width={30} />
           </div>
         </Tabs>
         <div className={classes.search}>

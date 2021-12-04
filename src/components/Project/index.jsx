@@ -8,12 +8,12 @@ import AdjustIcon from '@mui/icons-material/Adjust';
 import GroupIcon from '@mui/icons-material/Group';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ModalCard from '../ModalCard';
-import SmoothButton from '../SmoothButton'
+import SmoothButton from '../SmoothButton';
 
 import { Breadcrumbs } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   projectContainer: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
     gridGap: '60px',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   titleContainer: {
     display: 'flex',
@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
     gridTemplateRows: 'auto',
-    gridRowGap: 15
+    gridRowGap: 15,
   },
   link: {
     textDecoration: 'none',
@@ -128,13 +128,13 @@ const useStyles = makeStyles((theme) => ({
   },
   column: {},
   breadcrumbs: {
-    marginBottom: 30
+    marginBottom: 30,
   },
-    iconContainer: {
-      display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
+  iconContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 }));
 
 const ProjectBlock = ({
@@ -153,7 +153,7 @@ const ProjectBlock = ({
         {icon}
         <Typography variant="h6">{title}</Typography>
         {withButton ? (
-            <SmoothButton onButtonClick={onButtonClick} text={"Подробнее"}/>
+          <SmoothButton onButtonClick={onButtonClick} text={'Подробнее'} />
         ) : null}
       </div>
       {children}
@@ -167,36 +167,32 @@ const Project = ({ data: { projects } }) => {
   const [isTeamModalOpen, setIsTeamModalOpen] = useState(false);
 
   const projectDocs = [
-    "Техническое задание - код",
-    "Техническое задание - дизайн",
-    "Архитектура проекта",
-    "Карта коммуникаций (по RACI)"
+    'Техническое задание - код',
+    'Техническое задание - дизайн',
+    'Архитектура проекта',
+    'Карта коммуникаций (по RACI)',
   ];
 
   let currentProject;
   if (projects)
     currentProject = projects.find((p) => p.id === Number(params.id));
-
   else return <LinearProgress />;
 
   return (
     <div className={classes.projectContainer}>
       <div className={classes.column}>
-
         <div className={classes.breadcrumbs}>
-            <Breadcrumbs
-                separator={<NavigateNextIcon fontSize="small"/>}
-                aria-label="breadcrumb"
-            >
-              <Link className={classes.iconContainer}
-                    underline="hover" to="/">
-              <HomeIcon/>
-              </Link>
-              <Link underline="hover" to="">
+          <Breadcrumbs
+            separator={<NavigateNextIcon fontSize="small" />}
+            aria-label="breadcrumb"
+          >
+            <Link className={classes.iconContainer} underline="hover" to="/">
+              <HomeIcon />
+            </Link>
+            <Link underline="hover" to="">
               Карточка проекта
-              </Link>
-
-            </Breadcrumbs>
+            </Link>
+          </Breadcrumbs>
         </div>
 
         <Typography className={classes.containerTitle} variant="h4">
@@ -296,14 +292,13 @@ const Project = ({ data: { projects } }) => {
             </div>
           </div>
         </ModalCard>
-        <ProjectBlock
-            last
-            title={"Документы"}
-            icon={<EditIcon/>}
-        >
+        <ProjectBlock last title={'Документы'} icon={<EditIcon />}>
           <div className={classes.docsContainer}>
-            {projectDocs.map(doc =>
-                <a href="" key={projectDocs.indexOf(doc)}>{doc}</a>)}
+            {projectDocs.map((doc) => (
+              <a href="" key={projectDocs.indexOf(doc)}>
+                {doc}
+              </a>
+            ))}
           </div>
         </ProjectBlock>
       </div>
@@ -350,14 +345,8 @@ const Project = ({ data: { projects } }) => {
             ))}
           </div>
         </ProjectBlock>
-        <ProjectBlock
-            last
-            title={"Стек проекта"}
-            icon={<EditIcon/>}
-        >
-          <div className={classes.linksContainer}>
-            Django, React, Redux
-          </div>
+        <ProjectBlock last title={'Стек проекта'} icon={<EditIcon />}>
+          <div className={classes.linksContainer}>Django, React, Redux</div>
         </ProjectBlock>
       </div>
     </div>

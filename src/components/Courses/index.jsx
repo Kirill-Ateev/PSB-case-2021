@@ -2,10 +2,10 @@ import React from 'react';
 import { courseCardData } from '../../constants/constantValues';
 import CourseCard from './CourseCard';
 import { makeStyles } from '@mui/styles';
-import {Breadcrumbs, Typography} from '@mui/material';
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import {Link} from "react-router-dom";
-import HomeIcon from "@mui/icons-material/Home";
+import { Breadcrumbs, Typography } from '@mui/material';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { Link } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
 
 const useStyles = makeStyles((theme) => ({
   coursesPageContainer: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: 70,
     paddingLeft: 'min(140px, 8%)',
     paddingRight: 'min(140px, 8%)',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   coursesContainer: {
     display: 'flex',
@@ -25,13 +25,13 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '30px !important',
   },
   breadcrumbs: {
-    marginBottom: 30
+    marginBottom: 30,
   },
   iconContainer: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 }));
 
 const Courses = () => {
@@ -41,17 +41,15 @@ const Courses = () => {
     <div className={classes.coursesPageContainer}>
       <div className={classes.breadcrumbs}>
         <Breadcrumbs
-            separator={<NavigateNextIcon fontSize="small"/>}
-            aria-label="breadcrumb"
+          separator={<NavigateNextIcon fontSize="small" />}
+          aria-label="breadcrumb"
         >
-          <Link className={classes.iconContainer}
-                underline="hover" to="/">
-            <HomeIcon/>
+          <Link className={classes.iconContainer} underline="hover" to="/">
+            <HomeIcon />
           </Link>
           <Link underline="hover" to="">
             Вводные курсы
           </Link>
-
         </Breadcrumbs>
       </div>
       <Typography className={classes.title} variant="h4">

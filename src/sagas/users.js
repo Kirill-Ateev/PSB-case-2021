@@ -20,7 +20,7 @@ export function* login(action) {
         id: responseUserData.id,
         email: responseUserData.email,
         rating: responseUserData.rating,
-        group: responseUserData.group
+        group: responseUserData.group,
       });
     }
   } catch (error) {
@@ -37,14 +37,13 @@ export function* checkAuthorized(action) {
   try {
     const response = yield call(Api.get, 'auth/users/me/');
 
-      yield put({
-        type: types.RECEIVE_USER,
-        id: response.id,
-        email: response.email,
-        rating: response.rating,
-        group: response.group
-      });
-    
+    yield put({
+      type: types.RECEIVE_USER,
+      id: response.id,
+      email: response.email,
+      rating: response.rating,
+      group: response.group,
+    });
   } catch (error) {
     yield put({
       type: types.NOT_RECEIVE_USER,
@@ -80,12 +79,10 @@ export function* requestProfile(action) {
 
 export function* logout(action) {
   try {
- 
-      localStorage.removeItem('token');
-      yield put({
-        type: types.CLEAR_USER,
-      });
-    
+    localStorage.removeItem('token');
+    yield put({
+      type: types.CLEAR_USER,
+    });
   } catch (error) {
     yield put({
       type: types.NOT_CLEAR_USER,

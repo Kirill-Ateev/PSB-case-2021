@@ -34,7 +34,9 @@ export default class Api {
           defaultHeaders = {};
         }
 
-        defaultHeaders['Authorization'] = `Bearer ${localStorage.getItem('token')}`
+        defaultHeaders['Authorization'] = `Bearer ${localStorage.getItem(
+          'token'
+        )}`;
       }
 
       let url = notApiUrl ? endpoint : `${API_URL}/${endpoint}`;
@@ -54,7 +56,6 @@ export default class Api {
       console.log(json);
 
       if (json instanceof Object && json.constructor === Object) {
-
         json = camelizeKeys(json);
       }
 

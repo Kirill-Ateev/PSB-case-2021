@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  exercises,
-  PROGRESS_STEP,
-  COIN_STEP,
-} from '../../constants/constantValues';
+import { PROGRESS_STEP, COIN_STEP } from '../../constants/constantValues';
 import { makeStyles } from '@mui/styles';
 import {
   Alert,
@@ -15,6 +11,9 @@ import {
 } from '@mui/material';
 import SmoothButton from '../SmoothButton';
 import { NavLink } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import * as dataActions from '../../actions/data';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   exercisesContainer: {
@@ -31,45 +30,50 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     width: '50%',
-    margin: 'auto'
+    margin: 'auto',
   },
 }));
 
 const Exercise = ({
+  values,
+  setValues,
   questionId,
   progress,
   setProgress,
   setBalance,
   balance,
+  data: { courses },
+  dataActions: { updateCourse },
 }) => {
   const classes = useStyles();
-  const [values, setValues] = useState({});
-  const [hint, setHint] = useState({ id: null, state: null });
-  const currentExercise = exercises.find((e) => e.id === Number(questionId));
+
+  const currentExercise = courses[0].data.find(
+    (e) => e.id === Number(questionId)
+  );
   if (!currentExercise) return null;
 
   const validate = (questionId) => {
     switch (questionId) {
       case '1':
         if (values['1'] && !values['2'] && !values['3']) {
-          setHint({ id: 1, state: true });
+          updateCourse(1, 1, true);
           setProgress(progress + PROGRESS_STEP);
           setBalance(balance + COIN_STEP);
-        } else setHint({ id: 1, state: false });
+        } else updateCourse(1, 1, false);
         break;
       case '2':
         if (values['4'] && !values['5'] && !values['6']) {
-          setHint({ id: 2, state: true });
+          updateCourse(1, 2, true);
           setProgress(progress + PROGRESS_STEP);
           setBalance(balance + COIN_STEP);
-        } else setHint({ id: 2, state: false });
+        } else updateCourse(1, 2, false);
         break;
       case '3':
         if (!values['7'] && values['8'] && !values['9']) {
-          setHint({ id: 3, state: true });
+          updateCourse(1, 3, true);
           setProgress(progress + PROGRESS_STEP);
           setBalance(balance + COIN_STEP);
-        } else setHint({ id: 3, state: false });
+        } else updateCourse(1, 3, false);
         break;
       default:
         return;
@@ -86,7 +90,7 @@ const Exercise = ({
             key={variant.id}
             control={
               <Checkbox
-                disabled={hint.id === currentExercise.id && hint.state === true}
+                disabled={currentExercise.state}
                 checked={values[variant.id]}
                 onClick={() =>
                   setValues({ ...values, [variant.id]: !values[variant.id] })
@@ -97,17 +101,19 @@ const Exercise = ({
           />
         ))}
       </FormGroup>
-      {hint.id === currentExercise.id && hint.state === true ? (
+      {currentExercise.state === true ? (
         <Alert>{currentExercise.correct}</Alert>
       ) : null}
-      {hint.id === currentExercise.id && hint.state === false ? (
+      {currentExercise.state === false ? (
         <Alert severity="error">{currentExercise.incorrect}</Alert>
       ) : null}
-         <div className={classes.buttonsGroup}>
-        <NavLink to={`/courses/1/question/${Number(questionId) - 1}`}>
+      <div className={classes.buttonsGroup}>
+        <NavLink
+          to={`/courses/1/question/${Math.max(Number(questionId) - 1, 1)}`}
+        >
           <SmoothButton text={'Назад'} />
         </NavLink>
-        {hint.id === currentExercise.id && hint.state === true ? (
+        {currentExercise.state === true ? (
           <NavLink to={`/courses/1/question/${Number(questionId) + 1}`}>
             <SmoothButton text={'Продолжить'} />
           </NavLink>
@@ -119,9 +125,23 @@ const Exercise = ({
         )}
       </div>
       <img className={classes.img} src={currentExercise.photo} />
-   
     </div>
   );
 };
 
-export default Exercise;
+function mapStateToProps() {
+  const mapStateToProps = (state) => {
+    return {
+      data: state.data,
+    };
+  };
+  return mapStateToProps;
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dataActions: bindActionCreators(dataActions, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Exercise);

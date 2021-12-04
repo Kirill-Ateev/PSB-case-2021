@@ -1,6 +1,6 @@
-import illustr1 from "./assets/illustr1.png";
-import illustr2 from "./assets/illustr2.png";
-import illustr3 from "./assets/illustr3.png";
+import illustr1 from './assets/illustr1.png';
+import illustr2 from './assets/illustr2.png';
+import illustr3 from './assets/illustr3.png';
 
 export const API_URL = 'https://e-kondr01.ru/api';
 export const PROGRESS_STEP = 5;

@@ -11,7 +11,7 @@ export default function composeTheme() {
       primary: {
         main: '#009fda',
         secondary: '#CB5621',
-        white: '#ffffff'
+        white: '#ffffff',
       },
       secondary: {
         main: '#CB5621',
