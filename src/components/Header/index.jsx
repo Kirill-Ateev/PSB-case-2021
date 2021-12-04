@@ -9,7 +9,6 @@ import avatarImage from './assets/avatar.png';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { Link, NavLink } from 'react-router-dom';
-import {Abc} from "@mui/icons-material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const useStyles = makeStyles((theme) => ({
@@ -106,13 +105,13 @@ const useStyles = makeStyles((theme) => ({
 const Header = ({ user: { isLogged }, userActions, balance }) => {
   const classes = useStyles();
   const [isSignUpShow, setIsSignUpShow] = React.useState(false);
+  const avatar = (
+      <div className={classes.avatar}>
+        <Avatar src={avatarImage}></Avatar>
+        <KeyboardArrowDownIcon className={classes.arrowIcon}/>
+      </div>
+  )
 
-const avatar = (
-  <div className={classes.avatar}>
-    <Avatar src={avatarImage}></Avatar>
-    <KeyboardArrowDownIcon className={classes.arrowIcon}/>
-  </div>
-)
   return (
     <div className={classes.header}>
       <div className={classes.logoContainer}>
@@ -132,7 +131,6 @@ const avatar = (
         >
           <Tab value={0} label="Главная" to='/' component={Link}>
             </Tab>
-          {/* <Tab value={1} label="Проект" /> */}
           <div className={classes.money}>
             {`${balance} псб.`}
             <img src={coin} alt="coin" height={30} width={30}/>
@@ -165,8 +163,6 @@ const avatar = (
           </Button>
         )}
       </div>
-      {/* <Button onClick={() => setOpen(true)}>card</Button>
-      <ModalCard open={open} onClose={() => setOpen(false)} /> */}
     </div>
   );
 };
