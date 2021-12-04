@@ -268,8 +268,6 @@ function App({
             <Course
               values={values}
               setValues={setValues}
-              progress={progress}
-              setProgress={setProgress}
               setBalance={setBalance}
               progress={progress}
               setProgress={setProgress}

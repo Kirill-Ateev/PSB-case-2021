@@ -5,15 +5,18 @@ import {
   Alert,
   Button,
   Checkbox,
+  Dialog,
   FormControlLabel,
   FormGroup,
   Link,
+  Typography,
 } from '@mui/material';
 import SmoothButton from '../SmoothButton';
 import { NavLink } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import * as dataActions from '../../actions/data';
 import { connect } from 'react-redux';
+import modalImage from './assets/modalImage.png';
 
 const useStyles = makeStyles((theme) => ({
   exercisesContainer: {
@@ -32,6 +35,16 @@ const useStyles = makeStyles((theme) => ({
     width: '50%',
     margin: 'auto',
   },
+  dialogContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    gap: 10,
+    padding: 60,
+  },
+  dialogTitle: {
+    fontWeight: 'bold !important',
+  },
 }));
 
 const Exercise = ({
@@ -46,7 +59,7 @@ const Exercise = ({
   dataActions: { updateCourse },
 }) => {
   const classes = useStyles();
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const currentExercise = courses[0].data.find(
     (e) => e.id === Number(questionId)
   );
@@ -120,10 +133,38 @@ const Exercise = ({
         ) : (
           <SmoothButton
             text={'Проверить'}
-            onButtonClick={() => validate(questionId)}
+            onButtonClick={() => {
+              if (
+                questionId === 3 &&
+                !values['7'] &&
+                values['8'] &&
+                !values['9']
+              ) {
+                validate(questionId);
+                setIsModalOpen(true);
+              } else validate(questionId);
+            }}
           />
         )}
       </div>
+      {isModalOpen ? (
+        <Dialog open={isModalOpen}>
+          <div className={classes.dialogContainer}>
+            <Typography className={classes.dialogTitle} variant="h5">
+              Молодец, так держать!
+            </Typography>
+            <Typography variant="body1">
+              У тебя лучше результат, чем у 98% пользователей. Теперь у тебя на
+              балансе на 5 псбублей больше!
+            </Typography>
+            <img className={classes.img} src={modalImage} />
+            <SmoothButton
+              text="Продолжить"
+              onButtonClick={() => setIsModalOpen(false)}
+            />
+          </div>
+        </Dialog>
+      ) : null}
       <img className={classes.img} src={currentExercise.photo} />
     </div>
   );
