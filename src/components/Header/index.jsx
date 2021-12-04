@@ -121,30 +121,34 @@ const Header = ({ user: { isLogged }, userActions, balance }) => {
       </div>
       <Login open={isSignUpShow} handleClose={() => setIsSignUpShow(false)} />
       <div className={classes.userToolsContainer}>
-        <Tabs
-          value={0}
-          className={classes.tabs}
-          variant="scrollable"
-          scrollButtons="auto"
-          textColor="primaryWhite"
-          indicatorColor="secondary"
-        >
-          <Tab value={0} label="Главная" to="/" component={Link}></Tab>
-          <div className={classes.money}>
-            {`${balance} псб.`}
-            <img src={coin} alt="coin" height={30} width={30} />
-          </div>
-        </Tabs>
-        <div className={classes.search}>
-          <div className={classes.searchIconWrapper}>
-            <SearchIcon />
-          </div>
-          <InputBase
-            className={classes.inputBase}
-            placeholder="Search…"
-            inputProps={{ 'aria-label': 'search' }}
-          />
-        </div>
+        {isLogged ? (
+          <>
+            <Tabs
+              value={0}
+              className={classes.tabs}
+              variant="scrollable"
+              scrollButtons="auto"
+              textColor="primaryWhite"
+              indicatorColor="secondary"
+            >
+              <Tab value={0} label="Главная" to="/" component={Link}></Tab>
+              <div className={classes.money}>
+                {`${balance} псб.`}
+                <img src={coin} alt="coin" height={30} width={30} />
+              </div>
+            </Tabs>
+            <div className={classes.search}>
+              <div className={classes.searchIconWrapper}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                className={classes.inputBase}
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+              />
+            </div>
+          </>
+        ) : null}
         {isLogged ? avatar : <div></div>}
         {isLogged ? (
           <Button
