@@ -135,7 +135,7 @@ const Exercise = ({
             text={'Проверить'}
             onButtonClick={() => {
               if (
-                questionId === 3 &&
+                questionId === '3' &&
                 !values['7'] &&
                 values['8'] &&
                 !values['9']
