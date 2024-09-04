@@ -41,7 +41,7 @@ Express - для серверной части, чтобы отдать сбил
 
 **Разработчики**
 
-Атеев Кирилл, tg: @bgdshka\
+Атеев Кирилл, tg: @kirill_ateev\
 Антон Александрин, tg: @a_palych
 
 Бэкенд и CI/CD - https://github.com/e-kondr01/psb-case-back
